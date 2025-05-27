@@ -1,0 +1,14 @@
+SELECT 'CREATE DATABASE homework_db'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'homework_db')\gexec
+
+GRANT ALL PRIVILEGES ON DATABASE homework_db TO homework_user;
+
+\c homework_db
+
+GRANT ALL ON SCHEMA public TO homework_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO homework_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO homework_user;
+
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO homework_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO homework_user;

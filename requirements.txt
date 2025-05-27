@@ -1,0 +1,6 @@
+fastapi==0.115.12
+aiohttp>=3.8.0
+SQLAlchemy>=1.4
+asyncpg>=0.27.0
+asyncio-pool>=0.6.0
+greenlet==3.2.2
