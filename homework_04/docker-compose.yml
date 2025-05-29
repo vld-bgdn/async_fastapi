@@ -17,6 +17,25 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - app-network
+
+  web:
+    build: .
+    container_name: homework_04_web
+    ports:
+      - "8000:8000"
+    environment:
+      SQLALCHEMY_PG_CONN_URI: postgresql+asyncpg://homework_user:homework_password@postgres:5432/homework_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
 
 volumes:
   postgres_data:
+
+networks:
+  app-network:

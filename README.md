@@ -1,4 +1,4 @@
-### Домашнее задание "Асинхронная работа с сетью и БД"
+### Домашнее задание "Взаимодействие приложений между контейнерами, docker compose"
 ## Установка
 - Склонируейте репозиторий и перейдите в него:
 ```
@@ -9,20 +9,15 @@ cd async_fastapi
 ```
 python -m venv .venv ; source .venv/bin/activate
 ```
-- Установите зависимости через pip (для приложения и для тестов):
+Перейдите в каталог с приложением
 ```
-python -m pip install -r ./requirements.txt
-python -m pip install -r ./requirements-dev.txt
+cd homework_04
 ```
-- Запустите базу данных
+- Соберите образ
+```
+docker build .
+```
+- Запустите приложение с базой данных
 ```
 docker-compose up -d
-```
-- Запустите приложение
-```
-python main.py
-```
-- Запустите тест
-```
-python -m pytest ../testing/test_homework_04/test_main.py -vv
 ```

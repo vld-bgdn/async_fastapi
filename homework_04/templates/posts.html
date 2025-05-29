@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Posts - {{ super() }}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.body[:100] }}{% if post.body|length > 100 %}...{% endif %}</p>
+                <small class="text-muted">User ID: {{ post.user_id }} | Post ID: {{ post.id }}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not posts %}
+<div class="alert alert-info">
+    No posts found. <a href="/api/posts">Add a new post</a> or load data from JSONPlaceholder API.
+</div>
+{% endif %}
+{% endblock %}

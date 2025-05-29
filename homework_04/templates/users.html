@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Users - {{ super() }}{% endblock %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if not users %}
+<div class="alert alert-info">
+    No users found. <a href="/api/users">Add a new user</a> or load data from JSONPlaceholder API.
+</div>
+{% endif %}
+{% endblock %}
